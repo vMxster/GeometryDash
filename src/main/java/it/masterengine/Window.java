@@ -1,7 +1,12 @@
 package it.masterengine;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+
 import javax.swing.JFrame;
 
+import it.util.Constants;
 import it.util.Time;
 
 public class Window extends JFrame implements Runnable {
@@ -11,12 +16,14 @@ public class Window extends JFrame implements Runnable {
     public KeyPressListener keyListener;
     private boolean isRunning = true;
     private Scene currentScene = null;
+    public Image doubleBufferImage = null;
+    private Graphics doubleBufferGraphics = null;
 
     public Window() {
         this.mouseListener = new MouseListener();
         this.keyListener = new KeyPressListener();
-        this.setSize(1280, 720);
-        this.setTitle("Geometry Dash");
+        this.setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+        this.setTitle(Constants.SCREEN_TITLE);
         this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +59,23 @@ public class Window extends JFrame implements Runnable {
 
     public void update(double dt) {
         currentScene.update(dt);
+        draw(getGraphics());
+    }
+
+    public void draw(Graphics g) {
+        if (doubleBufferImage == null) {
+            doubleBufferImage = createImage(getWidth(), getHeight());
+            doubleBufferGraphics = doubleBufferImage.getGraphics();
+        }
+
+        renderOffScreen(doubleBufferGraphics);
+
+        g.drawImage(doubleBufferImage, 0, 0, getWidth(), getHeight(), null);
+    }
+
+    public void renderOffScreen(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        currentScene.draw(g2);
     }
 
     @Override

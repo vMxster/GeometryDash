@@ -1,6 +1,9 @@
 package it.masterengine;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+
+import it.util.Constants;
 
 public class LevelEditorScene extends Scene{
 
@@ -10,8 +13,7 @@ public class LevelEditorScene extends Scene{
 
     @Override
     public void init() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'init'");
+        
     }
 
     @Override
@@ -21,10 +23,8 @@ public class LevelEditorScene extends Scene{
 
     @Override
     public void draw(Graphics2D g2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'draw'");
+        g2.setColor(Color.BLUE);
+        g2.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
     }
-    
-
 
 }
