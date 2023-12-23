@@ -1,16 +1,19 @@
-package it.masterengine;
+package it.masterEngine;
 
 import java.awt.Graphics2D;
 
 public abstract class Scene {
     
-    private String name;
+    String name;
 
     public void Scene(String name) {
         this.name = name;
+        init();
     }
 
-    public abstract void init();
+    public void init() {
+        
+    }
 
     public abstract void update(double dt);
 

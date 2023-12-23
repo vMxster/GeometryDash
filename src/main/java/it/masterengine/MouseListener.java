@@ -1,4 +1,4 @@
-package it.masterengine;
+package it.masterEngine;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

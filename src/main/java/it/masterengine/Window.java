@@ -1,4 +1,4 @@
-package it.masterengine;
+package it.masterEngine;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
