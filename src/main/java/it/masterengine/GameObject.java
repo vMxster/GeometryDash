@@ -1,6 +1,7 @@
 package it.masterEngine;
 
 import java.util.List;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import it.dataStructure.Transform;
 
@@ -32,11 +33,18 @@ public class GameObject {
 
     public void addComponent(Component c) {
         components.add(c);
+        c.gameObject = this;
     }
 
     public void update(double dt) {
         for (Component c : components) {
             c.update(dt);
+        }
+    }
+
+    public void draw(Graphics2D g2) {
+        for (Component c : components) {
+            c.draw(g2);
         }
     }
 }
