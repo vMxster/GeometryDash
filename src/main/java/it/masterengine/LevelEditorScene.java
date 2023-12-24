@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import it.components.BoxBounds;
+import it.components.Spritesheet;
 import it.dataStructure.AssetPool;
 import it.dataStructure.Transform;
 import it.util.Constants;
@@ -19,14 +20,14 @@ public class LevelEditorScene extends Scene{
 
     @Override
     public void init() {
-        testObj = new GameObject("Some Game Object", new Transform(new Vector2(0.0f, 0.0f)));
-        testObj.addComponent(new BoxBounds("Box"));
-        testObj.addComponent(AssetPool.getSprite("assets/pic.png"));
+        testObj = new GameObject("Some Game Object", new Transform(new Vector2(500.0f, 300.0f)));
+        Spritesheet spritesheet = new Spritesheet("assets/player/layerOne.png",
+                 42, 42, 2, 13, 13*5);
+        testObj.addComponent(spritesheet.sprites.get(43));
     }
 
     @Override
     public void update(double dt) {
-        System.out.println(testObj.getComponent(BoxBounds.class).name);
         testObj.update(dt);
     }
 

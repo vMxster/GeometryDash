@@ -31,6 +31,12 @@ public class Sprite extends Component {
         }
     }
 
+    public Sprite(BufferedImage image) {
+        this.image = image;
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+    }
+
     @Override
     public void draw(Graphics2D g2) {
         g2.drawImage(image, (int) gameObject.transform.position.x, (int) gameObject.transform.position.y, width, height, null);
