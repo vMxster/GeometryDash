@@ -10,4 +10,7 @@ public class Vector2 {
         this.y = y;
     }
     
+    public Vector2() {
+        this(0.0f, 0.0f);
+    }
 }
